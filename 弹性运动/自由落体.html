@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自由落体</title>
+    <style>
+        #div {
+            position: absolute;
+            left: 0;
+            top: 40px;
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var input = document.getElementById('btn');
+            var oDiv = document.getElementById('div');
+            var timer = null;
+            var iSpeed = 0;
+            input.onclick = function() {
+                startMove()
+            }
+
+            function startMove() {
+                clearInterval(timer);
+                timer = setInterval(function() {
+                    iSpeed += 3;
+                    var T = oDiv.offsetTop + iSpeed;
+                    //触底反弹
+                    if (T > document.documentElement.clientHeight - oDiv.offsetHeight) {
+                        T = document.documentElement.clientHeight - oDiv.offsetHeight;
+                        iSpeed *= -1;
+                        //阻力
+                        iSpeed *= 0.75;
+                    }
+                    oDiv.style.top = T + "px";
+                }, 30)
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" id="btn" value="xxxxx">
+    <div id="div"></div>
+</body>
+
+</html>

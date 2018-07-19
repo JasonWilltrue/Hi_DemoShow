@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>无标题文档</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var oBtn = document.getElementById("button");
+            var oDiv1 = document.getElementById('div1');
+            var timer = null;
+            //摩擦减速  运动越来越慢
+            // var iSpeed = 50;
+            oBtn.onclick = function() {
+                console.log(oDiv1.offsetLeft);
+                clearInterval(timer);
+                var iSpeed = 0;
+                timer = setInterval(function() {
+                    // iSpeed -= 2; --错误的方法
+                    // iSpeed *= 0.9;
+                    iSpeed = (500 - oDiv1.offsetWidth) / 8;
+                    //考虑目标点是否 大于起始点 还是小于起始点  
+                    iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                    if (oDiv1.offsetLeft == 500) {
+                        clearInterval(timer);
+                    } else {
+                        console.log(iSpeed);
+                        oDiv1.style.left = oDiv1.offsetLeft + iSpeed + "px";
+                    }
+                }, 100)
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" id="button" value="按钮">
+    <div id="div1"></div>
+</body>
+
+</html>

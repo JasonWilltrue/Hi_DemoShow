@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分页</title>
+    <style>
+        a {
+            margin: 6px;
+            text-decoration: none;
+            color: black;
+        }
+        
+        #page {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            //配置信息
+            page({
+                id: "laypage",
+                nowNum: 1, //当前第几页
+                allNum: 5, //总页数
+                callback: function(now, all) {
+                    //渲染页面
+                    alert("当前页" + now + "总共页" + all)
+                }
+            })
+
+            function page(opt) {
+                //判断是否有id之传入
+                if (!opt.id) {
+                    return false;
+                }
+                var obj = document.getElementById(opt.id);
+                var nowNum = opt.nowNum || 1; //默认当前页
+                var allNum = opt.allNum || 5; //总共多少页
+                var callback = opt.callback || function() {};
+                //===============写首页 上一页大于6才能从中间开始向2边扩散================
+                if (nowNum > 4 && allNum >= 6) {
+                    var oA = document.createElement("a");
+                    oA.href = "javascript:;";
+                    oA.setAttribute("data-page", "#" + 1);
+                    oA.innerHTML = "首页";
+                    obj.appendChild(oA);
+                };
+                //上一页大于等于2
+                if (nowNum >= 2) {
+                    var oA = document.createElement("a");
+                    oA.href = "javascript:;";
+                    oA.setAttribute("data-page", "#" + (nowNum - 1));
+                    oA.innerHTML = "上一页";
+                    obj.appendChild(oA);
+                }
+                //==========第一步============
+                if (allNum <= 5) {
+                    for (var i = 1; i <= allNum; i++) {
+                        var oA = document.createElement("a");
+                        oA.href = "javascript:;";
+                        oA.setAttribute("data-page", "#" + i);
+                        if (nowNum == i) {
+                            oA.innerHTML = i;
+                        } else {
+                            oA.innerHTML = "[" + i + "]";
+                        }
+                        obj.appendChild(oA);
+
+                    }
+                } else {
+                    for (var i = 1; i < allNum; i++) {
+                        var oA = document.createElement("a");
+                        oA.href = "javascript:;";
+                        //若果等于1 则 -1 0 1 2 3 所以要判断
+                        if (nowNum == 1 && nowNum == 2) {
+                            oA.setAttribute("data-page", "#" + i);
+                            if (nowNum == i) {
+                                oA.innerHTML = i;
+                            } else {
+                                oA.innerHTML = "[" + i + "]"
+                            }
+                            obj.appendChild(oA);
+                        } else if ((allNum - nowNum) == 0 || (allNum - nowNum) == 1) {
+                            //分析最后2页  6 7 8 9 10   10-5+i；
+                            oA.setAttribute("data-page", "#" + (allNum - 5 + i));
+                            if ((allNum - nowNum) == 0 && i == 5) {
+                                oA.innerHTML = (allNum - 5 + i);
+                            } else if ((allNum - nowNum) == 1 && i == 4) {
+                                oA.innerHTML = (allNum - 5 + i);
+                            } else {
+                                oA.innerHTML = "[" + (allNum - 5 + i) + "]";
+                            }
+                            obj.appendChild(oA);
+                        } else {
+                            //比如说 4 5 6 7  当前是6  如何得到4  7-4+ i（i=1第一次）
+                            oA.setAttribute("data-page", "#" + (nowNum - 3 + i));
+                            if (nowNum == (nowNum - 3 + i)) {
+                                oA.innerHTML = (nowNum - 3 + i);
+                            } else {
+                                oA.innerHTML = "[" + (nowNum - 3 + i) + "]";
+                            }
+                            obj.appendChild(oA);
+                        }
+                    }
+                }
+                //========下一页=========
+                if ((allNum - nowNum) >= 1) {
+                    var oA = document.createElement("a");
+                    oA.href = "javascript:;";
+                    oA.setAttribute("data-page", "#" + (nowNum + 1));
+                    oA.innerHTML = "下一页";
+                    obj.appendChild(oA);
+                }
+                //尾页 为什么要大于6   如果只有5张就没必要
+                if ((allNum - nowNum) >= 3 && allNum >= 6) {
+                    var oA = document.createElement("a");
+                    oA.href = "javascript:;";
+                    oA.setAttribute('data-page', "#" + allNum);
+                    oA.innerHTML = "尾页";
+                    obj.appendChild(oA);
+                };
+                callback(nowNum, allNum);
+                var aA = obj.getElementsByTagName("a");
+                for (var i = 0; i < aA.length; i++) {
+                    aA[i].onclick = function() {
+                        var nowNum = parseInt(this.getAttribute("data-page").substring(1));
+                        obj.innerHTML = ''; //清空
+                        page({
+                                id: opt.id,
+                                nowNum: nowNum,
+                                allNum: allNum,
+                                callback: callback
+                            })
+                            //阻止a链接默认事件
+                        return false;
+                    }
+                }
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="page">
+        <div id="laypage">
+            <!-- <a href="javascript:;" data-page="1">上一页</a>
+            <a href="javascript:;" data-page="1">1</a>
+            <a href="javascript:;" data-page="2">2</a>
+            <a href="javascript:;" data-page="3">3</a>
+            <a href="javascript:;" data-page="3">下一页</a> -->
+        </div>
+    </div>
+</body>
+
+</html>

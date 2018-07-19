@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="layui/layui.js"></script>
+    <script src="js/json.js"></script>
+    <script src="js/demo1.js"></script>
+    <title>页面demo</title>
+    <style>
+        /* 分页插件居中显示 */
+        
+        #page {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="app-body">
+            <div class="app-viewport">
+                <aside class="project-banner">
+                    <div class="mo-container">
+                        <i class="mo-icon-coding1">
+                               <h1>H5Monkey`j</h1>
+                               <p>陆续发布一些<i class="icon mo-icon-demo16" style="font-size:2rem"></i></p>
+                        </i>
+                    </div>
+                </aside>
+                <div class="mo-container">
+                    <article class="project-list">
+                        <!-- <section class="project-item">
+                            <div class="project-item-body">
+                                <a href="/lab/service" class="project-item-thumb img-flicker">
+                                    <img src="img/1.jpg" alt="提供高品质前端开发服务">
+                                </a>
+                                <h3 class="project-item-title mo-text-overflow">提供高品质前端开发服务</h3>
+                                <p class="project-item-description">接活了！！！即日起，水墨寒有偿提供各种高品质前端开发服务，如果您有前端需求，请来撩我吧~~(｡◕‿◕｡)</p>
+                                <div class="project-item-info">
+                                    <span><i class="icon mo-icon-eye-open"></i> 1.02k</span>
+                                    <span><i class="icon mo-icon-praisepressed"></i> 2</span>
+                                    <span><i class="icon mo-icon-aixin"></i> 71</span>
+                                    <span data-tipsy="开源项目" class="info mo-ui-tipsy mo-tipsy--top"><i class="icon mo-icon-coding"></i> </span>
+                                </div>
+                            </div>
+                        </section> -->
+                        <!-- <section class="project-item">
+                            <div class="project-item-body">
+                                <a href="/lab/smusic" class="project-item-thumb img-flicker">
+                                    <img src="img/2.jpg" alt="HTML5列表音乐播放器SMusic">
+                                </a>
+                                <h3 class="project-item-title mo-text-overflow">HTML5列表音乐播放器SMusic</h3>
+                                <p class="project-item-description">一款基于HTML5、Css3的列表式音乐播放器，包含列表，音量，进度，时间，歌词展示以及播放模式等功能，不依赖任何库</p>
+                                <div class="project-item-info">
+                                    <span><i class="icon mo-icon-eye-open"></i> 1.02k</span>
+                                    <span><i class="icon mo-icon-praisepressed"></i> 2</span>
+                                    <span><i class="icon mo-icon-aixin"></i> 71</span>
+                                    <span data-tipsy="开源项目" class="info mo-ui-tipsy mo-tipsy--top"><i class="icon mo-icon-coding"></i> </span>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="project-item">
+                            <div class="project-item-body">
+                                <a href="/lab/smusic" class="project-item-thumb img-flicker">
+                                    <img src="img/3.jpg" alt="HTML5列表音乐播放器SMusic">
+                                </a>
+                                <h3 class="project-item-title mo-text-overflow">HTML5列表音乐播放器SMusic</h3>
+                                <p class="project-item-description">一款基于HTML5、Css3的列表式音乐播放器，包含列表，音量，进度，时间，歌词展示以及播放模式等功能，不依赖任何库</p>
+                                <div class="project-item-info">
+                                    <span><i class="icon mo-icon-eye-open"></i> 1.02k</span>
+                                    <span><i class="icon mo-icon-praisepressed"></i> 2</span>
+                                    <span><i class="icon mo-icon-aixin"></i> 71</span>
+                                    <span data-tipsy="开源项目" class="info mo-ui-tipsy mo-tipsy--top"><i class="icon mo-icon-coding"></i> </span>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="project-item">
+                            <div class="project-item-body">
+                                <a href="/lab/smusic" class="project-item-thumb img-flicker">
+                                    <img src="img/4.jpg" alt="HTML5列表音乐播放器SMusic">
+                                </a>
+                                <h3 class="project-item-title mo-text-overflow">HTML5列表音乐播放器SMusic</h3>
+                                <p class="project-item-description">，不依赖任何库</p>
+                                <div class="project-item-info">
+                                    <span><i class="icon mo-icon-eye-open"></i> 1.02k</span>
+                                    <span><i class="icon mo-icon-praisepressed"></i> 2</span>
+                                    <span><i class="icon mo-icon-aixin"></i> 71</span>
+                                    <span data-tipsy="开源项目" class="info mo-ui-tipsy mo-tipsy--top"><i class="icon mo-icon-coding"></i> </span>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="project-item">
+                            <div class="project-item-body">
+                                <a href="/lab/smusic" class="project-item-thumb img-flicker">
+                                    <img src="img/5.jpg" alt="HTML5列表音乐播放器SMusic">
+                                </a>
+                                <h3 class="project-item-title mo-text-overflow">HTML5列表音乐播放器SMusic</h3>
+                                <p class="project-item-description">模式</p>
+                                <div class="project-item-info">
+                                    <span><i class="icon mo-icon-eye-open"></i> 1.02k</span>
+                                    <span><i class="icon mo-icon-praisepressed"></i> 2</span>
+                                    <span><i class="icon mo-icon-aixin"></i> 71</span>
+                                    <span data-tipsy="开源项目" class="info mo-ui-tipsy mo-tipsy--top"><i class="icon mo-icon-coding"></i> </span>
+                                </div>
+                            </div>
+                        </section> -->
+                    </article>
+                </div>
+            </div>
+            <!-- 分页效果 -->
+            <ul id="biuuu_city_list"></ul>
+            <div id="page"></div>
+        </div>
+    </div>
+</body>
+
+</html>

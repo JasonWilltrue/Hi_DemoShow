@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>日历01布局</title>
+		<style>
+			*{ margin:0; padding:0; font-size:12px;}
+			#div1{ margin:20px; position:absolute; top:25px; left:10px; display:block;}
+			#nowTime{ width:330px; float:left;}
+			#nextTime { width:330px; float:left; margin:0 0 0 10px;}
+			.title{ width:100%; height:30px; background:red; color:#FFFFFF; position:relative;}
+			.title .c{ text-align:center; line-height:30px;}
+			.title .l{ position:absolute; top:6px; left:5px;}
+			.title .r{ position:absolute; top:6px; right:5px;}
+			table{ width:100%; background:#dee3e9; color:#9ea7ac;}
+			table tr{ background:#f9fafc;}
+			table th{ width:46px; padding:5px;}
+			table td{ padding:5px; text-align:center;}
+			.red{ color:#FF0000;}
+			.blue{ color:#0000FF;}
+			table td p{ color:#FF0000;}
+			input{ margin:20px;}
+		</style>
+	</head>
+	<body>
+	<input type="text" /><input type="text" /><input type="button" value="确定" />
+<div id="div1">
+	<div id="nowTime">
+    	<div class="title">
+        	<div class="l"><span>3</span>月</div>
+            <div class="c"><span>2000</span>年<span>3</span>月</div>
+        </div>
+        <table>
+        	<thead>
+            	<tr>
+                	<th>周一</th>
+                    <th>周二</th>
+                    <th>周三</th>
+                    <th>周四</th>
+                    <th>周五</th>
+                    <th class="red">周六</th>
+                    <th class="red">周日</th>
+                </tr>
+            </thead>
+        	<tbody>
+           		<tr>
+                	<td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                	<td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>
+                    	1
+                    	<p>200元</p>
+                    </td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="nextTime">
+    	<div class="title">
+        	<div class="r"><span>3</span>月</div>
+            <div class="c"><span>2000</span>年<span>3</span>月</div>
+        </div>
+        <table>
+        	<thead>
+            	<tr>
+                	<th>周一</th>
+                    <th>周二</th>
+                    <th>周三</th>
+                    <th>周四</th>
+                    <th>周五</th>
+                    <th class="red">周六</th>
+                    <th class="red">周日</th>
+                </tr>
+            </thead>
+        	<tbody>
+           		<tr>
+                	<td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                	<td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>
+                    	1
+                    	<p>200元</p>
+                    </td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

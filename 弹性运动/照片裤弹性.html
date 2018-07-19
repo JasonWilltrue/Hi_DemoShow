@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>照片弹性运动</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        body {
+            background: #333;
+        }
+        
+        #iphone {
+            width: 900px;
+            height: 600px;
+            background: url(img/bg.png);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -300px 0 0 -450px;
+        }
+        
+        #wrap {
+            width: 238px;
+            height: 360px;
+            position: absolute;
+            top: 121px;
+            left: 326px;
+            /* overflow: hidden; */
+        }
+        
+        #iphone ul {
+            width: 960px;
+            height: 361px;
+            cursor: pointer;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+        
+        #iphone li {
+            float: left;
+            width: 240px;
+            height: 360px;
+            /* overflow: hidden; */
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var oWarp = document.getElementById("wrap");
+            var oUl = document.getElementById("ul1");
+            var aLi = oUl.getElementsByTagName("li");
+            var disX = 0;
+            var timer = null;
+            var iSpeed = 0;
+            var Now = 0;
+
+            oWarp.onmousedown = function(ev) {
+                clearInterval(timer);
+                var ev = ev || window.event;
+                disX = ev.clientX - oUl.offsetLeft;
+                downX = ev.clientX;
+
+                document.onmousemove = function(ev) {
+                    var ev = ev || window.event;
+                    oUl.style.left = ev.clientX - disX + "px";
+
+                }
+                document.onmouseup = function(ev) {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                    var ev = ev || window.event;
+
+                    //判断左右方向 
+                    if (ev.clientX < downX) {
+                        if (Now != aLi.length - 1) {
+                            Now++;
+                        }
+                        startMove(-Now * aLi[0].offsetWidth);
+                    } else {
+                        if (Now != 0) {
+                            Now--;
+                        }
+                        startMove(-Now * aLi[0].offsetWidth);
+                    }
+                };
+                return false;
+            };
+
+            function startMove(iTarget) {
+                clearInterval(timer);
+                timer = setInterval(function() {
+                    iSpeed += (-oUl.offsetLeft + iTarget) / 6;
+                    iSpeed *= 0.75;
+
+                    if (Math.abs(iSpeed) <= 1 && Math.abs(iTarget - oUl.offsetLeft) <= 1) {
+                        clearInterval(timer);
+                        iSpeed = 0;
+                        oUl.style.left = iTarget + "px";
+                    } else {
+                        oUl.style.left = oUl.offsetLeft + iSpeed + 'px';
+                    }
+                }, 30)
+            }
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="iphone">
+        <div id="wrap">
+            <ul id="ul1">
+                <li style="background:url(img/pic1.png);" title="1"></li>
+                <li style="background:url(img/pic2.png);" title="2"></li>
+                <li style="background:url(img/pic3.png);" title="3"></li>
+                <li style="background:url(img/pic4.png);" title="4"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>无标题文档</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #ul1 {
+            width: 428px;
+            height: 30px;
+            margin: 20px auto;
+            position: relative;
+        }
+        
+        #ul1 li {
+            width: 100px;
+            height: 30px;
+            background: #666966;
+            border: 1px #000 solid;
+            margin-right: 5px;
+            float: left;
+            list-style: none;
+            line-height: 30px;
+            text-align: center;
+        }
+        
+        #ul1 #mark {
+            position: absolute;
+            left: 0;
+            top: 0;
+            overflow: hidden;
+            background: blueviolet;
+        }
+        
+        #ul1 #mark ul {
+            position: absolute;
+            left: -1px;
+            top: -1px;
+            width: 428px;
+            color: white;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var mark = document.getElementById("mark");
+            var oBox = document.getElementsByClassName('box');
+            var childUl = mark.getElementsByTagName("ul")[0];
+
+            var timer = null;
+            var iSpeed = 0;
+            var timer2 = null;
+
+            for (var i = 0; i < oBox.length; i++) {
+                oBox[i].onmouseover = function() {
+                    clearInterval(timer2);
+                    startMove(this.offsetLeft)
+                }
+
+                oBox[i].onmouseout = function() {
+                    timer2 = setTimeout(function() {
+                        startMove(0)
+                    }, 100);
+                }
+            }
+
+            mark.onmouseover = function() {
+                clearInterval(timer2);
+            }
+
+            mark.onmouseout = function() {
+                timer2 = setTimeout(function() {
+                    startMove(0)
+                }, 100);
+            }
+
+
+            function startMove(iTarget) {
+                clearInterval(timer);
+                timer = setInterval(function() {
+                    iSpeed += (-mark.offsetLeft + iTarget) / 6;
+                    iSpeed *= 0.70
+                    if (Math.abs(iSpeed) <= 1 && Math.abs(iTarget - mark.offsetLeft) <= 1) {
+
+                        clearInterval(timer);
+                        mark.style.left = iTarget + "px";
+                        childUl.style.left = -iTarget + "px";
+                        iSpeed = 0;
+                    } else {
+                        mark.style.left = (iSpeed + mark.offsetLeft) + "px";
+                        childUl.style.left = -mark.offsetLeft + "px";
+                    }
+                }, 100)
+            }
+
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <h5>问题遮罩层变宽，遮罩层与li是兄弟关系 也就是 onmouseout事件发生</h5>
+    <h5>解决:out发生的时候用延时定时器 延迟 stramove归0；然后在mark上鼠标移入再做定时器清空</h5>
+    <ul id="ul1">
+        <li id="mark">
+            <ul>
+                <li>首页</li>
+                <li>论坛</li>
+                <li>视频</li>
+                <li>留言</li>
+            </ul>
+        </li>
+        <li class="box">首页</li>
+        <li class="box">论坛</li>
+        <li class="box">视频</li>
+        <li class="box">留言</li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+    <script>
+        //弹性公式： 速度 += （-当前值 +目标点）/系数  6 7 8
+        //速度 *= 摩擦系数（小于1）；0.7 .075
+        //缓冲运动 
+        //        速度 =  （目标点 - 当前值）/系数
+        //速度取整
+        //摩擦力 == 速度损失 速度接近0
+        window.onload = function() {
+            var oInput = document.getElementById('input1');
+            var oDiv = document.getElementById('div1');
+
+            var timer = null;
+            var iSpeed = 0;
+
+            oInput.onclick = function() {
+                startMove();
+            };
+
+            function startMove() {
+                clearInterval(timer);
+                timer = setInterval(function() {
+
+                    // if (oDiv.offsetLeft < 500) {
+                    //     //物体与目标距离越大加速度越大，反之越小
+                    //     iSpeed += (500 - oDiv.offsetLeft) / 50;
+                    // } else {
+                    //     iSpeed -= (oDiv.offsetLeft - 500) / 50;
+                    // }
+                    //合并成一句话
+                    iSpeed += (-oDiv.offsetLeft + 500) / 6;
+                    iSpeed *= 0.75;
+                    //满足2个添加  距离接近目标点 速度接近0
+                    if (Math.abs(iSpeed) <= 1 && Math.abs(500 - oDiv.offsetLeft) <= 1) {
+                        clearInterval(timer);
+                        oDiv.style.left = '500px';
+                        iSpeed = 0;
+                    } else {
+
+                        oDiv.style.left = oDiv.offsetLeft + iSpeed + 'px';
+                    }
+                    document.title = oDiv.style.left + 'px';
+
+                }, 30);
+            }
+
+        };
+    </script>
+</head>
+
+<body>
+
+    <ol>
+        <li>//弹性公式： 速度 += （-当前值 +目标点）/系数 6 7 8</li>
+        <li>//速度 *= 摩擦系数（小于1）；0.7 .075</li>
+        <li>//缓冲运动 // 速度 = （目标点 - 当前值）/系数</li>
+        <li>//速度取整 //摩擦力 == 速度损失 速度接近0</li>
+    </ol>
+    <input type="button" value="开始运动" id="input1">
+    <div id="div1"></div>
+</body>
+
+</html>
