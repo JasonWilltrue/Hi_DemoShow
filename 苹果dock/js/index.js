@@ -2,7 +2,7 @@ window.onload=function()
 {
     var oDiv1 = document.getElementById("div1");
     var aImgs = oDiv1.getElementsByTagName("img");
-    var ainput = document.getElementsByTagName("input");
+    // var ainput = document.getElementsByTagName("input");
     
     console.log(aImgs[0].getBoundingClientRect());
     
