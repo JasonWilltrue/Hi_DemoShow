@@ -8,7 +8,7 @@ layui.use(['laypage', 'layer'], function() {
             laypage.render({
                 elem: 'page', //挂载器
                 count: json.data.length, //总长度
-                limit: 6, //页面显示内容的个数
+                limit: 8, //页面显示内容的个数
                 jump: function(obj) {
                     //模拟渲染
                     document.getElementsByClassName("project-list")[0].innerHTML = function() {

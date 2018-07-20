@@ -37,7 +37,18 @@
              image: "城市联动.jpg",
              url: "城市联动/index.html",
              content: "一个关于省市区城市联动的小Demo"
-         }
-
+         },
+         {
+            title: "京东放大镜",
+            image: "放大镜.png",
+            url: "京东放大镜/index.html",
+            content: "一个关于放大镜的小demo"
+        },
+        {
+            title: "苹果DOCK",
+            image: "苹果dock.png",
+            url: "苹果dock/index.html",
+            content: "一个关于底部dock的小demo"
+        }
      ]
  }
