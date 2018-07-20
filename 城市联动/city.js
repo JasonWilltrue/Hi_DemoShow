@@ -25,6 +25,7 @@ $(function() {
 
     $('[name="nice-select"]').on("click", "li", function(e) {
         var val = $(this).text();
+        console.log('城市'+val);
         var id = $(this).attr("data-value");
         var parent = $(this).parents('[name="nice-select"]').attr("id");
         $(this).parents('[name="nice-select"]').find('input').val(val);
@@ -32,6 +33,7 @@ $(function() {
         $('[name="nice-select"] ul').hide();
         //点击加载
         if (parent == "province") {
+            ProName = val;
             render(id);
         } else if (parent == "city") {
             var proKey = $("#province input").attr("data-id");
@@ -42,7 +44,7 @@ $(function() {
                 $area = $("<li value=" + key + ">" + areaArr[key] + "</li>");
                 $("#area ul").append($area);
             });
-            $("#address").val(ProName + "," + cityName + "," + areaArr[0]);
+            $("#address").val(ProName + "," + val + "," + areaArr[0]);
             //自动获取第一排数据为默认数据
             $("#area input").val($("#area ul li:first").text());
             $("#area input").attr("data-id", $("#area ul li:first").attr("data-value"));
@@ -64,6 +66,7 @@ $(function() {
         $("#city input").attr("data-id", $("#city ul li:first").attr("data-value"));
         var cityKey = $("#city input").attr("data-id");
         var areaArr = JSON[id].city[cityKey].area;
+        console.log('城市'+areaArr)
         $("#area ul").empty();
         $.each(areaArr, function(key, area) {
             $area = $("<li value=" + key + ">" + areaArr[key] + "</li>");
@@ -76,56 +79,3 @@ $(function() {
 
 
 })
-
-
-
-
-
-
-
-// $(function() {
-//     var JSON = data;
-//     var proKey, cityName, ProName;
-//     $.each(JSON, function(key, cityArr) {
-//         $pro = $("<li data-value=" + key + ">" + JSON[key].name + "</li>");
-//         $("#province ul").append($pro);
-//     });
-//     //自动获取第一排数据为默认数据
-//     $("#province input").val($("#province ul li:first").text());
-//     $("#province input").attr("data-id", $("#province ul li:first").attr("data-value"));
-
-//     function cityShow(obj) {
-//         $("#address").empty();
-//         ProName = obj.text();
-//         proKey = obj.attr("data-value");
-//         var cityArr = JSON[proKey].city;
-//         $("#city ul").empty();
-//         $.each(cityArr, function(key, area) {
-//             $city = $("<li data-value=" + key + ">" + cityArr[key].name + "</li>");
-//             $("#city ul").append($city);
-//         });
-//         $("#city").triggerHandler("change");
-//         $("#address").val(ProName + "," + cityArr[0].name + "," + cityArr[0].area[0]);
-//     }
-
-
-
-//     // $("#city").on("change", function() {
-//     //     cityName = $("#city input").val();
-//     //     var cityKey = $("#city input").attr("data-id");
-//     //     var areaArr = JSON[proKey].city[cityKey].area;
-//     //     $("#area ul").empty();
-//     //     $.each(areaArr, function(key, area) {
-//     //         $area = $("<li value=" + key + ">" + areaArr[key] + "</li>");
-//     //         $("#area").append($area);
-//     //     });
-//     //     $("#city").triggerHandler("change");
-//     //     $("#address").val(ProName + "," + cityName + "," + areaArr[0]);
-//     // });
-//     // $("#province").triggerHandler("change");
-//     // $("#area").on("change", function() {
-//     //     var area = $("#area input").val();
-//     //     $("#address").val(ProName + "," + cityName + "," + area);
-//     // });
-
-// })
