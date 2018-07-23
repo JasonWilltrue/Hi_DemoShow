@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/index.js"></script>
+  <title>轮播图2</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #999;
+    }
+    #wrap {
+      height: 500px;
+      background-size: 1800px 500px;
+      position: relative;
+      transform-style: preserve-3d;
+      perspective: 800px;
+      margin-top: 100px;
+    }
+
+    img {
+      border: none;
+      vertical-align: top;
+    }
+
+    #wrap img {
+      width: 300px;
+      height: 200px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -150px;
+      /*  居中*/
+      margin-top: -100px;
+      transition: 0.7s ease-in-out;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <img src="img/0.png" />
+    <img src="img/1.png" />
+    <img src="img/2.png" />
+    <img src="img/3.png" />
+    <img src="img/4.png" />
+    <img src="img/5.png" />
+    <img src="img/6.png" />
+  </div>
+</body>
+
+</html>

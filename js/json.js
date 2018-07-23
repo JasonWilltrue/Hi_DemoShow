@@ -55,6 +55,12 @@
             image: "照片墙拖动.png",
             url: "照片墙拖动/index.html",
             content: "一个关于照片墙拖动的小demo；注意随机算法的使用，练习拖动效果的原理"
+        },
+        {
+            title: "展示图轮播",
+            image: "展示图.png",
+            url: "轮播图2/index.html",
+            content: "一个关于展示图的小demo"
         }
      ]
  }
