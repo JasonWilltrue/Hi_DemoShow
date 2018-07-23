@@ -49,6 +49,12 @@
             image: "苹果dock.png",
             url: "苹果dock/index.html",
             content: "一个关于底部dock的小demo"
+        },
+        {
+            title: "照片墙拖动",
+            image: "照片墙拖动.png",
+            url: "照片墙拖动/index.html",
+            content: "一个关于照片墙拖动的小demo；注意随机算法的使用，练习拖动效果的原理"
         }
      ]
  }
