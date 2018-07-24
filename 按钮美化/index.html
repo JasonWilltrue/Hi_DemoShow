@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+  <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.js"></script>
+  <style type="text/css">
+    .a-upload {
+      padding: 4px 20px;
+      height: 30px;
+      line-height: 30px;
+      position: relative;
+      /*相对定位*/
+      cursor: pointer;
+      color: #fff;
+      background: #2486ff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      display: inline-block;
+      text-decoration: none;
+
+    }
+
+    .a-upload input {
+      position: absolute;
+      font-size: 100px;
+      right: 0;
+      top: 0;
+      opacity: 0;
+      filter: alpha(opacity=0);
+      cursor: pointer
+    }
+
+    .a-upload:hover {
+      color: #444;
+      background: #eee;
+      border-color: #ccc;
+      box-shadow: 2px 2px 3px #ddd;
+    }
+  </style>
+  <script>
+    $(function () {
+      $('pre code').each(function () {
+        texts = $(this).text().replace(/&(?!#?[a-zA-Z0-9]+;)/g, '&amp;')
+          .replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').replace(/"/g, '&quot;')
+        var codetext = texts.split('\n');
+        var code = '';
+        $(codetext).each(function (v) {
+          code += '<li>' + codetext[v] + '</li>';
+        })
+        code = '<ol>' + code + '</ol>';
+        $(this).html(code);
+      });
+    });
+  </script>
+</head>
+<body>
+  <a href="javascript:;" class="a-upload">
+    <input type="file" name="" id="">点击这里上传文件
+  </a>
+  <p>附带小功能：截取上传文件名：</p>
+  <div>
+    <pre>
+      <code class="lang-javascript">
+          <script type="text/javascript">
+            $(document).ready(function(){
+                 var  src ="";
+                $(".a-upload").on("change","input[type='file']",function(){
+                    src = $(this).val();
+                   console.log(src);
+                   if (src.indexOf("jpg") != -1 || src.indexOf("png") != -1 ) {
+                          $(".filetext").html("").hide();
+                          var arr = src.split("\\");
+                          var filename = arr[arr.length-1];
+                          var  name = filename.split(".");
+                          var  lastname =  name[0];
+                          $(".showfileName").html(lastname);
+                   }else{
+                             $(".showfileName").html("");
+                              $(".filetext").html("宁未上传文件，或者宁上传的文件类型有误")
+                   }
+                })
+            
+            })
+   </script>
+      </code>
+      </pre>
+  </div>
+</body>
+
+</html>

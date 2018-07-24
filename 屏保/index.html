@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>屏保</title>
+  <script src="./js/index.js"></script>
+  <style>
+    body{
+      margin: 0;
+      background-color: #5e5e5e;
+    }
+    #box{
+      width: 857px;
+      height: 574px;
+      padding-top: 126px;
+      padding-left:143px;
+      background: url(img/bg.png) no-repeat;
+      margin: 0px auto;
+    }
+    #wrap{
+      width: 700px;
+      height: 420px;
+      transform-style: preserve-3d;
+      perspective: 800px;
+    }
+    #wrap div{
+      width: 10px;
+      height: 420px;
+      background: url(img/01.png) no-repeat;
+      float: left;
+      transition: .5s;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <div id="wrap">
+    </div>
+  </div>
+</body>
+</html>

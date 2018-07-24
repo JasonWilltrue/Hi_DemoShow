@@ -61,6 +61,18 @@
             image: "展示图.png",
             url: "轮播图2/index.html",
             content: "一个关于展示图的小demo"
+        },
+        {
+            title: "屏保",
+            image: "屏保.png",
+            url: "屏保/index.html",
+            content: "一个关于电视机屏保的效果"
+        },
+        {
+            title: "按钮美化",
+            image: "按钮美化.png",
+            url: "按钮美化/index.html",
+            content: "一个关于按钮美化的效果"
         }
      ]
  }
