@@ -42,7 +42,7 @@
                                       .replace(/{{caption}}/,item.caption)
                                       .replace(/{{desc}}/,item.desc),
                 navTemp = nav_html.replace(/{{id}}/,i);
-
+            // 数组中放html标签
             photos.push(photoTemp);
             nav.push(navTemp);
         });
