@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3D照片墙</title>
+	<style>
+		body,p,h3 {
+			margin: 0;
+			padding: 0;
+		}
+		* {
+			-webkit-user-select: none;
+		}
+	</style>
+	<link rel="stylesheet" href="css/photo.css">
+</head>
+<body>
+	<div class="photo_wall">
+		<div class="photo">
+			<!-- 每张图片的最外层，用来控制图片的旋转和位移 -->
+			<div class="photo_i front" id="photo_{{id}}">
+				<!-- 内层用来控制图片的3D翻转 -->
+				<div class="photo_3d">
+					<!-- 每个照片的正面 -->
+					<div class="photo_side photo_front">
+						 <!-- 照片地址 -->
+						<p><img {{src}}="{{img}}"></p>
+						<!-- 描述 -->
+						<h3>{{caption}}</h3>
+					</div>
+					<!-- 每个照片的反面 -->
+					<div class="photo_side photo_back">
+						<!-- 背景描述 -->
+						<p class="desc">{{desc}}</p>
+					</div>
+				</div>
+			</div>
+			{{split}}
+			<div class="nav"><span class="nav_i" id="nav_{{id}}">&#xe67e;</span></div>
+		</div>
+		<div class="shade">
+			<div class="start">Start View</div>
+		</div>
+	</div>
+	<script src="js/data.js"></script>
+	<script src="js/tools.js"></script>
+	<script src="js/photo.js"></script>
+</body>
+</html>

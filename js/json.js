@@ -73,6 +73,12 @@
             image: "按钮美化.png",
             url: "按钮美化/index.html",
             content: "一个关于按钮美化的效果"
+        },
+        {
+            title: "3D照片墙",
+            image: "3d照片墙.png",
+            url: "3D照片墙/index.html",
+            content: "一个关于照片旋转的效果"
         }
      ]
  }
