@@ -5,11 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/switch.css">
+  <link rel="stylesheet" href="./css/tips.css">
   <title>Document</title>
-  <link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
-  <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  <script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.js"></script>
   <style type="text/css">
     .a-upload {
       padding: 4px 20px;
@@ -61,6 +59,7 @@
     });
   </script>
 </head>
+
 <body>
   <a href="javascript:;" class="a-upload">
     <input type="file" name="" id="">点击这里上传文件
@@ -70,29 +69,52 @@
     <pre>
       <code class="lang-javascript">
           <script type="text/javascript">
-            $(document).ready(function(){
-                 var  src ="";
-                $(".a-upload").on("change","input[type='file']",function(){
-                    src = $(this).val();
-                   console.log(src);
-                   if (src.indexOf("jpg") != -1 || src.indexOf("png") != -1 ) {
-                          $(".filetext").html("").hide();
-                          var arr = src.split("\\");
-                          var filename = arr[arr.length-1];
-                          var  name = filename.split(".");
-                          var  lastname =  name[0];
-                          $(".showfileName").html(lastname);
-                   }else{
-                             $(".showfileName").html("");
-                              $(".filetext").html("宁未上传文件，或者宁上传的文件类型有误")
-                   }
-                })
-            
+            $(document).ready(function () {
+              var src = "";
+              $(".a-upload").on("change", "input[type='file']", function () {
+                src = $(this).val();
+                console.log(src);
+                if (src.indexOf("jpg") != -1 || src.indexOf("png") != -1) {
+                  $(".filetext").html("").hide();
+                  var arr = src.split("\\");
+                  var filename = arr[arr.length - 1];
+                  var name = filename.split(".");
+                  var lastname = name[0];
+                  $(".showfileName").html(lastname);
+                } else {
+                  $(".showfileName").html("");
+                  $(".filetext").html("宁未上传文件，或者宁上传的文件类型有误")
+                }
+              })
+
             })
-   </script>
+          </script>
       </code>
       </pre>
-  </div>
+    </div>
+    <hr>
+    <br>
+    <p>css3实现的switch开关按钮</p>
+    <label>
+      <input class="mui-switch" type="checkbox"> 默认未选中</label>
+      <br>
+    <label>
+      <input class="mui-switch" type="checkbox" checked> 默认选中</label>
+    <br>
+    <p>简单的背景过渡效果,加mui-switch-animbg类即可</p>
+    <label>
+      <input class="mui-switch mui-switch-animbg" type="checkbox"> 默认未选中,</label>
+       <br>
+      <label>
+      <input class="mui-switch mui-switch-animbg" type="checkbox" checked> 默认选中</label>
+     <hr>
+     <br>
+     <p>tips小提示</p>
+     <div class="chat-msg">HI 亲</div>
+     <br>
+     <div class="chat-msg jianbian">HI 渐变色</div>
+     <br>
+     <div class="chat-msg jianbian1">HI 渐变色</div>
 </body>
 
 </html>

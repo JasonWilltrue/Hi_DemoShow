@@ -1,0 +1,66 @@
+.chat-msg{
+     margin-left: 50px;
+     width: 100px;
+     height: 40px;
+     border:1px solid #ccc;
+     position: relative;
+     /* CSS3 Filter（滤镜）属性提供了提供模糊和改变元素颜色的功能。
+     CSS3 Fitler 常用于调整图像的渲染、背景或边框显示效果。 */
+     filter: drop-shadow(0 0 2px #999);
+     border-color: #64bd64;
+     background-color: #64bd64;
+     border-radius: 6px;
+     text-align: center;
+     line-height: 40px;
+}
+.chat-msg::before{
+     content: '';
+     position: absolute;
+     left:-10px;
+     top:12px;
+     border-top: 6px solid transparent;
+     border-bottom: 6px solid transparent;
+     border-right: 10px solid #64bd64;
+     
+}
+.chat-msg::after{
+    content: '';
+    position: absolute;
+    left:-10px;
+    top:14px;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+     border-right: 10px solid #64bd64;
+}
+/* 渐变色 */
+.jianbian{
+    background: #43cea2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #185a9d, #43cea2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff;
+}
+.jianbian::after{
+    border-right: 10px solid #185a9d;
+    
+}
+.jianbian::before{
+    border-right: 10px solid #185a9d;
+    
+}
+
+/* 渐变色 */
+.jianbian1{
+    background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-color: #434343;
+    color: #fff;
+}
+.jianbian1::after{
+    border-right: 10px solid #434343;
+    
+}
+.jianbian1::before{
+    border-right: 10px solid #434343;
+    
+}
