@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
 	//获取节点
 	var wrap = document.getElementById('wrap');
 	var str = '';
@@ -12,9 +12,9 @@ window.onload = function() {
 	var srcNum = 2;
 	go();
 	function go() {
-		timer = setInterval(function() {
-      //		console.log( 1 );
-      // 切换图片
+		timer = setInterval(function () {
+			//		console.log( 1 );
+			// 切换图片
 			tab(num);
 			num++;
 			if (num == 71) {

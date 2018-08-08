@@ -4,7 +4,7 @@ label.bui-checkbox-label input {
     visibility: hidden;
     opacity: 0;
   }
-  
+
   label.bui-checkbox-label .bui-checkbox {
     display: inline-block;
     position: relative;
@@ -15,38 +15,37 @@ label.bui-checkbox-label input {
     border-radius: 2px;
     vertical-align: -2px;
   }
-  
+
   label.bui-checkbox-label input:checked + .bui-checkbox:after {
     color: #FFFFFF;
     font-family: iconfont;
     content: "\e652";
     border: none;
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     font-size: 13px;
     line-height: 13px;
     position: absolute;
     top: 0px;
     left: 0;
   }
-  
+
   label.bui-checkbox-label input:checked + .bui-checkbox {
     background: #00B066;
     border: 1px solid #00B066;
   }
-  
+
   label.bui-checkbox-label input:disabled + .bui-checkbox {
     background-color: #e8e8e8;
     border: solid 1px #979797;
   }
-  
+
   label.bui-checkbox-label input:disabled:checked + .bui-checkbox:after {
     color: #c1c1c1;
   }
-  
+
   label.bui-checkbox-label.bui-checkbox-anim .bui-checkbox {
     -webkit-transition: background-color ease-out .3s;
     transition: background-color ease-out .3s;
   }
-  
-  
+
