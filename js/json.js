@@ -79,6 +79,12 @@
             image: "3d照片墙.png",
             url: "3D照片墙/index.html",
             content: "一个关于照片旋转的效果"
+        },
+        {
+            title: "自定义滚动条",
+            image: "自定义滚动条.png",
+            url: "自定义滚动条/index.html",
+            content: "一个关于自定义滚动条的效果"
         }
      ]
  }
