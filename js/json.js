@@ -85,6 +85,13 @@
             image: "自定义滚动条.png",
             url: "自定义滚动条/index.html",
             content: "一个关于自定义滚动条的效果"
+        },
+        {
+            title: "JS导览",
+            image: "",
+            url: "JS导览/index.html",
+            content: "一份关于学习JS的思维导图，希望对自己有帮助！"
         }
+
      ]
  }
