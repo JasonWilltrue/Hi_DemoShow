@@ -91,6 +91,12 @@
             image: "",
             url: "JS导览/index.html",
             content: "一份关于学习JS的思维导图，希望对自己有帮助！"
+        },
+        {
+            title: "Loadding",
+            image: "loadding.png",
+            url: "Loadding/index.html",
+            content: "一个漂亮的Loadding效果！"
         }
 
      ]
