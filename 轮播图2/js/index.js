@@ -1,13 +1,13 @@
 window.onload = function() {
-	var imgs = document.getElementsByTagName('img');
+	var imgs   = document.getElementsByTagName('img');
 	var target = '';
-	var n = 6; //开始值
-	var onoff = true; //解决快速多点   乱跑问题
+	var n      = 6;                                     //开始值
+	var onoff  = true;                                  //解决快速多点   乱跑问题
 	setTimeout(function() {
 		tab(n);
 	}, 200);
 
-	//   3 4 5 6 0 1 2
+	//   3 4 5 6 0 1 2   //初始化
 	function tab(n) {
 		for (var i = 0; i < 3; i++) {
 			var left = n - 1 - i;
@@ -15,26 +15,26 @@ window.onload = function() {
 				// 重要步骤一
 				left = left + 7;
 			}
-			imgs[left].style.transform =
+			imgs[left].style.transform = 
 				'translateX(' + -150 * (i + 1) + 'px) translateZ(' + (200 - i * 100) + 'px) rotateY(30deg)'; //往右边移动 150   景深 2边 离中心越远 越 小
 			var right = n + 1 + i;
 			if (right > 6) {
 				// 重要步骤一
 				right = right - 7;
 			}
-			imgs[right].style.transform =
+			imgs[right].style.transform = 
 				'translateX(' + 150 * (i + 1) + 'px) translateZ(' + (200 - i * 100) + 'px) rotateY(-30deg)';
 		}
 		imgs[n].style.transform = 'translateZ(300px)';
 	}
 
 	for (var i = 0; i < imgs.length; i++) {
-		imgs[i].index = i;
+		imgs[i].index   = i;
 		imgs[i].onclick = function() {
 			if (!onoff) {
 				return;
 			}
-			onoff = false;
+			onoff  = false;
 			target = this.index;
 			//alert(this.index)
 			//gonext();
@@ -57,7 +57,8 @@ window.onload = function() {
 		};
 	}
 
-	function gonext() { //图片切换
+	function gonext() {
+		//图片切换
 		n++; // +1
 		if (n > 6) {
 			//判断是否大于6  回归 0
@@ -73,7 +74,8 @@ window.onload = function() {
 			gonext();
 		}, 700);
 	}
-	function goprev() { //图片切换
+	function goprev() {
+		//图片切换
 		n--; // +1
 		if (n < 0) {
 			//判断是否大于6  回归 0
