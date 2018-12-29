@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="./index.css" />
+		<script src="./move.js"></script>
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="div1">
+			<ul id="ul1">
+				<li><img src="img/1.jpg" /></li>
+				<li><img src="img/2.jpg" /></li>
+				<li><img src="img/3.jpg" /></li>
+				<li><img src="img/4.jpg" /></li>
+				<li><img src="img/5.jpg" /></li>
+			</ul>
+		</div>
+		<script>
+			window.onload = function() {
+				var oDiv = document.getElementById('div1');
+				var oUl = document.getElementById('ul1');
+				var aLi = oUl.getElementsByTagName('li');
+
+				var w = aLi[0].offsetWidth;
+
+				oUl.style.width = aLi.length * w + 'px';
+				var downLeft = 0;
+				var downX = 0;
+				var iNow = 0;
+				var downTime = 0;
+				var bBtn = true;
+
+				oUl.ontouchstart = function(ev) {
+					var touchs = ev.changedTouches[0];
+					downX = touchs.pageX;
+					downLeft = this.offsetLeft;
+					downTime = Date.now();
+					oUl.ontouchmove = function(ev) {
+						var touchs = ev.changedTouches[0];
+						if (bBtn) {
+							bBtn = false;
+							downX = touchs.pageX;
+						}
+						//这次的点击位置 - 上一次点击位置  + 距离边距的距离
+						this.style.left = touchs.pageX - downX + downLeft + 'px';
+						console.log(this.style.left);
+					};
+
+					oUl.ontouchend = function(ev) {
+						var touchs = ev.changedTouches[0];
+						//手抬起后的 坐标值比较  左滑还是右滑
+						if (touchs.pageX < downX) {
+							if (iNow != aLi.length - 1) {
+								if (
+									//
+									/*   划过整个屏幕的一半才能正常画过一张照片 三个条件
+                   *    1. 滑动距离超过屏幕的一半
+                        2、滑动时间短 300毫秒以内
+                        3. 并且距离也需要有
+                   */
+									downX - touchs.pageX > oDiv.offsetWidth / 2 ||
+									(Date.now() - downTime < 300 && downX - touchs.pageX > 30)
+								) {
+									iNow++;
+								}
+							}
+
+							startMove(oUl, { left: -iNow * w }, 400, 'easeOut');
+						} else {
+							if (iNow != 0) {
+								if (
+									//  划过整个屏幕的一半才能正常画过一张照片
+									touchs.pageX - downX > oDiv.offsetWidth / 2 ||
+									(Date.now() - downTime < 300 && touchs.pageX - downX > 30)
+								) {
+									iNow--;
+								}
+							}
+						}
+
+						startMove(oUl, { left: -iNow * w }, 400, 'easeOut');
+					};
+				};
+			};
+		</script>
+	</body>
+</html>

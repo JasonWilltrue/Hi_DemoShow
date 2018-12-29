@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style lang="">
+			html {
+				font-size: 4vw; /*1rem = 16.56 px*/
+				height: 100%;
+			}
+			body {
+				margin: 0;
+				height: 100%;
+			}
+			header {
+				width: 100%;
+				height: 10.99033816425121rem;
+				background: url('img/title.png') no-repeat;
+				background-size: 100% 100%;
+				position: fixed;
+				top: 0;
+				left: 0;
+			}
+			img {
+				width: 100%;
+				height: 100%;
+				vertical-align: middle;
+				border-radius: 2rem;
+				border: 1px solid rgb(43, 38, 38);
+				box-shadow: 3px 3px 3px rgba(39, 37, 37, 0.2);
+			}
+			.card {
+				width: 100%;
+				height: 100%;
+				background: #b8b6b6;
+				position: relative;
+				overflow: hidden;
+				perspective: 500px; /*视角*/
+			}
+			.box {
+				width: 10rem;
+				height: 20rem;
+				position: absolute;
+				bottom: 4rem;
+				left: 50%;
+				transform: translateX(-50%);
+				transform-style: preserve-3d; /* 避免子集元素的3d变化受到影响 */
+			}
+			.box div {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			/*运用css3中的3d盒模型*/
+			/* .box div:nth-of-type(1) {
+				transform: translateX(-200px) translateZ(-120px);
+			}
+			.box div:nth-of-type(2) {
+				transform: translateX(-100px) translateZ(-60px);
+			}
+			.box div:nth-of-type(3) {
+			}
+			.box div:nth-of-type(4) {
+				transform: translateX(100px) translateZ(-60px);
+			}
+			.box div:nth-of-type(5) {
+				transform: translateX(200px) translateZ(-120px);
+			} */
+			/*.box div:nth-of-type(6) {
+				transform: rotate(-50deg) translateZ(-300px);
+			}
+			.box div:nth-of-type(7) {
+				transform: rotate(-60deg) translateZ(-360px);
+			} */
+		</style>
+	</head>
+	<body>
+		<div class="card">
+			<div class="box">
+				<div><img src="img/card1.jpg" alt="" /></div>
+				<div><img src="img/card2.jpg" alt="" /></div>
+				<div><img src="img/card3.jpg" alt="" /></div>
+				<div><img src="img/card4.jpg" alt="" /></div>
+				<div><img src="img/card5.jpg" alt="" /></div>
+				<!-- <div><img src="img/card6.jpg" alt="" /></div>
+				<div><img src="img/card7.jpg" alt="" /></div> -->
+			</div>
+		</div>
+		<script>
+			//获取元素
+			var cardDiv = document.querySelectorAll('.box div');
+			var card = document.querySelector('.card');
+			var now = 0;
+			var off = true;
+			var midNum = 0;
+			var positionArr = []; //记录图片初始值
+			init();
+			function init() {
+				for (let i = 0; i < cardDiv.length; i++) {
+					const midNum = Math.floor(cardDiv.length / 2);
+
+					cardDiv[i].style.transform =
+						'translateX(' + (i - midNum) * 100 + 'px) translateZ(-' + Math.abs(i - midNum) * 60 + 'px)';
+					positionArr.push([(i - midNum) * 100, Math.abs(i - midNum) * 60]);
+				}
+				console.log(midNum, positionArr);
+			}
+			//触发移动事件
+			card.addEventListener('touchmove', function() {
+				//避免move被多次触动
+				if (!off) {
+					return;
+				}
+				off = false;
+				//更改排序位置(删除最后  插入到最前面)
+				positionArr.unshift(positionArr.pop());
+				console.log(positionArr);
+				//给当前的这个添加出去的动画
+				cardDiv[now].style.transition = '.5s,opacity .1s .1s';
+				cardDiv[now].style.transform = 'rotateZ(-120px) translateX(-500px)';
+				cardDiv[now].style.opacity = '0';
+				//当前的出去了，让后续的上来
+				cardDiv.forEach((item, index) => {
+					if (now == index) {
+						item.style.transform =
+							'translateX(' + positionArr[index][0] + 'px) translateZ(-' + positionArr[index][1] + 'px)';
+					}
+					item.style.opacity = '1';
+					item.style.transition = '.5s,opacity .1s .3s';
+					item.style.transform =
+						'translateX(' + positionArr[index][0] + 'px) translateZ(-' + positionArr[index][1] + 'px)';
+				});
+
+				now++;
+				if (now == cardDiv.length) {
+					now = 0;
+				}
+				//设置move触发时间
+				setTimeout(() => {
+					off = true;
+				}, 300);
+			});
+		</script>
+	</body>
+</html>
